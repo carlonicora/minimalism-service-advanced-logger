@@ -1,0 +1,36 @@
+{
+  "name": "carlonicora/minimalism-service-advanced-logger",
+  "description": "Advanced Logger for minimalism",
+  "version": "1.0.0",
+  "homepage": "https://carlonicora.com",
+  "time": "2022-01-12",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Carlo Nicora",
+      "email": "carlo@carlonicora.com",
+      "homepage": "https://carlonicora.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CarloNicora\\Minimalism\\Services\\AdvancedLogger\\":"src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "carlonicora/jsonapi": "~3.0",
+    "carlonicora/minimalism": "~13.0",
+    "carlonicora/minimalism-interface-mailer": "~1.0",
+    "carlonicora/minimalism-interface-data": "~1.0",
+    "carlonicora/minimalism-service-auth": "~4.1",
+    "carlonicora/minimalism-service-data-mapper": "~1.0",
+    "carlonicora/minimalism-service-geolocator": "~5.0",
+    "carlonicora/minimalism-service-mysql": "~5.0",
+    "carlonicora/minimalism-service-slack": "~3.0"
+  }
+}

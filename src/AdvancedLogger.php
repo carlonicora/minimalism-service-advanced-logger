@@ -45,6 +45,7 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     /**
      * @param ServiceFactory $services
      * @return void
+     * @throws Exception
      */
     public function postIntialise(
         ServiceFactory $services,

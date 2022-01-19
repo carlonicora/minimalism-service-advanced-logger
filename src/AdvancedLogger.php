@@ -52,16 +52,7 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     {
         $this->geolocator = $services->create(Geolocator::class);
         $this->auth = $services->create(Auth::class);
-    }
 
-    /**
-     * @return void
-     * @throws Exception
-     */
-    public function initialise(
-    ): void
-    {
-        parent::initialise();
         $this->logs = [];
         $this->loggerCommand = $this->objectFactory->create(MySqlLoggerCommand::class);
 

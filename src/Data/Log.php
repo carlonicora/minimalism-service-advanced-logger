@@ -19,8 +19,8 @@ class Log extends AbstractDataObject
     /** @var string|null  */
     private ?string $verb;
 
-    /** @var string  */
-    private string $uri;
+    /** @var string|null  */
+    private ?string $uri;
 
     /** @var int  */
     private int $time;
@@ -55,7 +55,7 @@ class Log extends AbstractDataObject
         );
 
         $this->time = time();
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri = ($_SERVER['REQUEST_URI'] ?? null);
         $this->verb = ($_SERVER['REQUEST_METHOD'] ?? null);
     }
 

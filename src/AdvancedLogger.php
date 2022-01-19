@@ -30,6 +30,14 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     private ?MySqlLoggerCommand $loggerCommand=null;
 
     /**
+     * @return string|null
+     */
+    public static function getBaseInterface(): ?string
+    {
+        return LoggerInterface::class;
+    }
+
+    /**
      * @param Path $path
      * @param int $MINIMALISM_LOG_LEVEL
      * @noinspection PhpUnusedParameterInspection

@@ -25,8 +25,8 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     /** @var LoggerCommandInterface[]  */
     private array $loggerCommands;
 
-    /** @var MySqlLoggerCommand */
-    private MySqlLoggerCommand $loggerCommand;
+    /** @var MySqlLoggerCommand|null */
+    private ?MySqlLoggerCommand $loggerCommand=null;
 
     /**
      * @param Path $path
@@ -85,6 +85,7 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     ): void
     {
         $this->flush();
+        $this->loggerCommand = null;
         $this->logs = [];
         $this->loggerCommands = [];
 

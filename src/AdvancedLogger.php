@@ -2,6 +2,7 @@
 namespace CarloNicora\Minimalism\Services\AdvancedLogger;
 
 use CarloNicora\Minimalism\Abstracts\AbstractService;
+use CarloNicora\Minimalism\Factories\ServiceFactory;
 use CarloNicora\Minimalism\Objects\ModelParameters;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Commands\EmailLoggerCommand;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Commands\MySqlLoggerCommand;
@@ -31,21 +32,26 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     /**
      * @param Path $path
      * @param int $MINIMALISM_LOG_LEVEL
-     * @param Geolocator|null $geolocator
-     * @param Auth|null $auth
      * @noinspection PhpUnusedParameterInspection
      */
     public function __construct(
         Path $path,
         private int $MINIMALISM_LOG_LEVEL=200,
-        ?Geolocator $geolocator=null,
-        ?Auth $auth=null,
     )
     {
         $this->logLevel = LogLevel::from($this->MINIMALISM_LOG_LEVEL);
+    }
 
-        $this->geolocator = $geolocator;
-        $this->auth = $auth;
+    /**
+     * @param ServiceFactory $services
+     * @return void
+     */
+    public function postIntialise(
+        ServiceFactory $services,
+    ): void
+    {
+        $this->geolocator = $services->create(Geolocator::class);
+        $this->auth = $services->create(Auth::class);
     }
 
     /**

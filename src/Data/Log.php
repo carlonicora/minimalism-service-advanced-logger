@@ -3,7 +3,7 @@ namespace CarloNicora\Minimalism\Services\AdvancedLogger\Data;
 
 use CarloNicora\Minimalism\Enums\LogLevel;
 use CarloNicora\Minimalism\Factories\ObjectFactory;
-use CarloNicora\Minimalism\Services\DataMapper\Abstracts\AbstractDataObject;
+use CarloNicora\Minimalism\Interfaces\Data\Abstracts\AbstractDataObject;
 use Exception;
 
 class Log extends AbstractDataObject

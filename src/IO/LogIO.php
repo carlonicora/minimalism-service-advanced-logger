@@ -1,12 +1,12 @@
 <?php
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\IO;
 
+use CarloNicora\Minimalism\Interfaces\Data\Abstracts\AbstractIO;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Database\Logger\Tables\LogsTable;
-use CarloNicora\Minimalism\Services\DataMapper\Abstracts\AbstractLoader;
 use Exception;
 
-class LogIO extends AbstractLoader
+class LogIO extends AbstractIO
 {
     /**
      * @param Log $log

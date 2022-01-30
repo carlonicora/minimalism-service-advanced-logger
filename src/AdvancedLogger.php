@@ -3,6 +3,7 @@ namespace CarloNicora\Minimalism\Services\AdvancedLogger;
 
 use CarloNicora\Minimalism\Abstracts\AbstractService;
 use CarloNicora\Minimalism\Factories\ServiceFactory;
+use CarloNicora\Minimalism\Interfaces\Security\Interfaces\SecurityInterface;
 use CarloNicora\Minimalism\Objects\ModelParameters;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Commands\EmailLoggerCommand;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Commands\MySqlLoggerCommand;
@@ -13,7 +14,6 @@ use CarloNicora\Minimalism\Interfaces\LoggerInterface;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Traits\AdditionalInformationTrait;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Traits\LoggerFunctionsTraits;
 use CarloNicora\Minimalism\Services\Geolocator\Geolocator;
-use CarloNicora\Minimalism\Services\OAuth\OAuth;
 use CarloNicora\Minimalism\Services\Path;
 use Exception;
 use Throwable;
@@ -60,7 +60,7 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
     ): void
     {
         $this->geolocator = $services->create(Geolocator::class);
-        $this->oauth = $services->create(OAuth::class);
+        $this->authorisation = $services->create(SecurityInterface::class);
 
         $this->logs = [];
         $this->loggerCommand = $this->objectFactory->create(MySqlLoggerCommand::class);

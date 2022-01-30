@@ -1,9 +1,9 @@
 <?php
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Traits;
 
+use CarloNicora\Minimalism\Interfaces\Security\Interfaces\SecurityInterface;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
 use CarloNicora\Minimalism\Services\Geolocator\Geolocator;
-use CarloNicora\Minimalism\Services\OAuth\OAuth;
 use Exception;
 use Throwable;
 
@@ -12,8 +12,8 @@ trait AdditionalInformationTrait
     /** @var Geolocator  */
     private Geolocator $geolocator;
 
-    /** @var OAuth  */
-    protected OAuth $oauth;
+    /** @var SecurityInterface  */
+    protected SecurityInterface $authorisation;
 
     /** @var array  */
     private array $ipLocation = [];
@@ -45,9 +45,9 @@ trait AdditionalInformationTrait
         }
 
         try {
-            $app = $this->oauth->getApp();
-            $this->domain = $app['name'] . '(' . $app['appId'] . ')';
-            $this->userId = $this->oauth->getUserId();
+            $app = $this->authorisation->getApp();
+            $this->domain = $app?->getName() . '(' . $app?->getId() . ')';
+            $this->userId = $this->authorisation->getUserId();
         } catch (Exception|Throwable) {
             $this->domain = '';
             $this->userId = null;

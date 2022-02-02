@@ -29,7 +29,7 @@ class Log extends AbstractDataObject
     private ?int $parentLogId=null;
 
     /**
-     * @param ObjectFactory $objectFactory
+     * @param ObjectFactory|null $objectFactory
      * @param array|null $data
      * @param LogLevel $logLevel
      * @param int|null $id
@@ -39,7 +39,7 @@ class Log extends AbstractDataObject
      * @param array $context
      */
     public function __construct(
-        ObjectFactory $objectFactory,
+        ?ObjectFactory $objectFactory = null,
         ?array $data = null,
         private LogLevel $logLevel=LogLevel::Info,
         private ?int $id=null,

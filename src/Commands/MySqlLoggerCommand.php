@@ -2,9 +2,9 @@
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Commands;
 
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Database\Logger\IO\LogIO;
+use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\IO\LogIO;
 use Exception;
 
 class MySqlLoggerCommand implements LoggerCommandInterface, SimpleObjectInterface

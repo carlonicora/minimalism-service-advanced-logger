@@ -8,7 +8,7 @@ use CarloNicora\Minimalism\Interfaces\Mailer\Interfaces\MailerInterface;
 use CarloNicora\Minimalism\Interfaces\Mailer\Objects\Email;
 use CarloNicora\Minimalism\Interfaces\Mailer\Objects\Recipient;
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 
 class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterface

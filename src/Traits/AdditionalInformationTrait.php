@@ -2,7 +2,7 @@
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Traits;
 
 use CarloNicora\Minimalism\Interfaces\Security\Interfaces\SecurityInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
 use CarloNicora\Minimalism\Services\Geolocator\Geolocator;
 use Exception;
 use Throwable;

@@ -1,27 +1,41 @@
 <?php
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Database\Logger\Tables;
 
-use CarloNicora\Minimalism\Services\MySQL\Abstracts\AbstractMySqlTable;
-use CarloNicora\Minimalism\Services\MySQL\Interfaces\FieldInterface;
+use CarloNicora\Minimalism\Services\MySQL\Data\SqlField;
+use CarloNicora\Minimalism\Services\MySQL\Data\SqlTable;
+use CarloNicora\Minimalism\Services\MySQL\Enums\FieldOption;
+use CarloNicora\Minimalism\Services\MySQL\Enums\FieldType;
 
-class LogsTable extends AbstractMySqlTable
+#[SqlTable(name: 'logs', databaseIdentifier: 'Logger')]
+enum LogsTable
 {
-    /** @var string  */
-    protected static string $tableName = 'logs';
+    #[SqlField(fieldType: FieldType::Integer,fieldOption: FieldOption::AutoIncrement)]
+    case logId;
 
-    /** @var array  */
-    protected static array $fields = [
-        'logId'         => FieldInterface::INTEGER
-                        +  FieldInterface::PRIMARY_KEY
-                        +  FieldInterface::AUTO_INCREMENT,
-        'parentLogId'   => FieldInterface::INTEGER,
-        'level'         => FieldInterface::INTEGER,
-        'message'       => FieldInterface::STRING,
-        'domain'        => FieldInterface::STRING,
-        'context'       => FieldInterface::STRING,
-        'userId'        => FieldInterface::INTEGER,
-        'method'        => FieldInterface::STRING,
-        'uri'           => FieldInterface::STRING,
-        'time'          => FieldInterface::STRING,
-    ];
+    #[SqlField(fieldType: FieldType::Integer)]
+    case parentLogId;
+
+    #[SqlField(fieldType: FieldType::Integer)]
+    case level;
+
+    #[SqlField]
+    case message;
+
+    #[SqlField]
+    case domain;
+
+    #[SqlField]
+    case context;
+
+    #[SqlField(fieldType: FieldType::Integer)]
+    case userId;
+
+    #[SqlField]
+    case method;
+
+    #[SqlField]
+    case uri;
+
+    #[SqlField(fieldOption: FieldOption::TimeCreate)]
+    case time;
 }

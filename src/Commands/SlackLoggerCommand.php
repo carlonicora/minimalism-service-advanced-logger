@@ -9,7 +9,7 @@ use CarloNicora\Minimalism\Services\Slack\Objects\SlackMessage;
 use CarloNicora\Minimalism\Services\Slack\Slack;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 
 class SlackLoggerCommand implements LoggerCommandInterface

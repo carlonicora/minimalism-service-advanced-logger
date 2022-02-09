@@ -6,6 +6,7 @@ namespace CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects;
 
 use CarloNicora\Minimalism\Enums\LogLevel;
 use CarloNicora\Minimalism\Factories\ObjectFactory;
+use CarloNicora\Minimalism\Factories\TimerFactory;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbField;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbTable;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\DbFieldType;
@@ -85,6 +86,8 @@ class Log implements SqlDataObjectInterface
         $this->message = $message;
         $this->domain = $domain;
         $this->context = $context;
+
+        $this->context['duration'] = TimerFactory::elapse();
 
         $this->time = time();
         $this->uri = ($_SERVER['REQUEST_URI'] ?? null);

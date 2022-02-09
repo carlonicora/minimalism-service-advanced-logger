@@ -30,9 +30,9 @@ class Log implements SqlDataObjectInterface
     #[DbField]
     private int $logId;
 
-    /** @var int  */
+    /** @var int|null  */
     #[DbField]
-    private int $parentLogId;
+    private ?int $parentLogId=null;
 
     /** @var LogLevel  */
     #[DbField(fieldType: DbFieldType::Custom)]

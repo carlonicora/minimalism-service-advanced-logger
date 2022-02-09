@@ -42,9 +42,9 @@ class Log implements SqlDataObjectInterface
     #[DbField]
     private string $message;
 
-    /** @var string  */
+    /** @var string|null  */
     #[DbField]
-    private string $domain;
+    private ?string $domain;
 
     /** @var array  */
     #[DbField(fieldType: DbFieldType::Array)]

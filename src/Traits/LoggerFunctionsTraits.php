@@ -2,7 +2,7 @@
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Traits;
 
 use CarloNicora\Minimalism\Enums\LogLevel;
-use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
 
 trait LoggerFunctionsTraits
 {

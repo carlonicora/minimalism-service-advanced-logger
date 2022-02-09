@@ -3,14 +3,14 @@ namespace CarloNicora\Minimalism\Services\AdvancedLogger\Commands;
 
 use CarloNicora\Minimalism\Enums\LogLevel;
 use CarloNicora\Minimalism\Interfaces\Encrypter\Interfaces\EncrypterInterface;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 use CarloNicora\Minimalism\Services\Slack\Objects\Elements\SlackMessageElementText;
 use CarloNicora\Minimalism\Services\Slack\Objects\Parts\SlackMessagePartHeader;
 use CarloNicora\Minimalism\Services\Slack\Objects\SlackMessage;
 use CarloNicora\Minimalism\Services\Slack\Slack;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
-use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 
 class SlackLoggerCommand implements LoggerCommandInterface
 {

@@ -8,7 +8,7 @@ use CarloNicora\Minimalism\Interfaces\Mailer\Interfaces\MailerInterface;
 use CarloNicora\Minimalism\Interfaces\Mailer\Objects\Email;
 use CarloNicora\Minimalism\Interfaces\Mailer\Objects\Recipient;
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 
 class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterface
@@ -18,6 +18,9 @@ class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
 
     /** @var Recipient  */
     private Recipient $sender;
+
+    /** @var bool  */
+    private bool $isActive=false;
 
     public function __construct(
         private MailerInterface $mailer,
@@ -45,6 +48,8 @@ class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
                 name: $senderName,
                 type: RecipientType::Sender,
             );
+
+            $this->isActive = true;
         }
     }
 
@@ -56,7 +61,7 @@ class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
         Log $log,
     ): bool
     {
-        return $log->getLogLevel()->value >= LogLevel::Emergency->value;
+        return ($this->isActive && $log->getLogLevel()->value >= LogLevel::Emergency->value);
     }
 
     /**
@@ -67,24 +72,26 @@ class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
         Log $log,
     ): Log
     {
-        $link = $this->MINIMALISM_SERVICE_ADVANCED_LOGGER_URL !== null
-            ? $this->MINIMALISM_SERVICE_ADVANCED_LOGGER_URL . $this->encrypter->encryptId($log->getId())
-            : '';
+        if ($this->isActive) {
+            $link = $this->MINIMALISM_SERVICE_ADVANCED_LOGGER_URL !== null
+                ? $this->MINIMALISM_SERVICE_ADVANCED_LOGGER_URL . $this->encrypter->encryptId($log->getId())
+                : '';
 
-        $email = new Email(
-            sender: $this->sender,
-            subject: '[EMERGENCY] ' . $log->getMessage(),
-            body: 'Emergency error ' . $log->getId() . PHP_EOL . $link,
-        );
+            $email = new Email(
+                sender: $this->sender,
+                subject: '[EMERGENCY] ' . $log->getMessage(),
+                body: 'Emergency error ' . $log->getId() . PHP_EOL . $link,
+            );
 
-        /** @var Recipient $recipient */
-        foreach ($this->distributionList as $recipient){
-            $email->addRecipient($recipient);
+            /** @var Recipient $recipient */
+            foreach ($this->distributionList as $recipient) {
+                $email->addRecipient($recipient);
+            }
+
+            $this->mailer->send(
+                $email,
+            );
         }
-
-        $this->mailer->send(
-            $email,
-        );
 
         return $log;
     }

@@ -1,5 +1,5 @@
 <?php
-namespace CarloNicora\Minimalism\Services\AdvancedLogger\Database\Logger\Tables;
+namespace CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\Databases;
 
 use CarloNicora\Minimalism\Services\MySQL\Data\SqlField;
 use CarloNicora\Minimalism\Services\MySQL\Data\SqlTable;

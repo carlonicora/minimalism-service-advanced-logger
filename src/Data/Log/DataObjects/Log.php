@@ -2,7 +2,7 @@
 /** @noinspection UnusedConstructorDependenciesInspection */
 /** @noinspection SenselessPropertyInspection */
 
-namespace CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects;
+namespace CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects;
 
 use CarloNicora\Minimalism\Enums\LogLevel;
 use CarloNicora\Minimalism\Factories\ObjectFactory;
@@ -10,7 +10,7 @@ use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbField;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbTable;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\DbFieldType;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Database\Logger\Tables\LogsTable;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\Databases\LogsTable;
 use CarloNicora\Minimalism\Services\MySQL\Traits\SqlDataObjectTrait;
 
 #[DbTable(tableClass: LogsTable::class)]
@@ -174,8 +174,6 @@ class Log implements SqlDataObjectInterface
             return $this->level->value;
         }
 
-        $this->level = LogLevel::from($value);
-
-        return null;
+        return LogLevel::from($value);
     }
 }

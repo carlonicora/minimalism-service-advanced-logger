@@ -2,8 +2,8 @@
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Commands;
 
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Database\Logger\IO\LogIO;
-use CarloNicora\Minimalism\Services\AdvancedLogger\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\IO\LogIO;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 use Exception;
 

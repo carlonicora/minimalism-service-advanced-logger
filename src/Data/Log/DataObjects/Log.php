@@ -75,7 +75,7 @@ class Log implements SqlDataObjectInterface
      * @param array $context
      */
     public function __construct(
-        private ObjectFactory $objectFactory,
+        private readonly ObjectFactory $objectFactory,
         LogLevel $logLevel=LogLevel::Info,
         string $message='',
         ?string $domain=null,

@@ -15,10 +15,10 @@ use GuzzleHttp\Exception\GuzzleException;
 class SlackLoggerCommand implements LoggerCommandInterface
 {
     public function __construct(
-        private Slack $slack,
-        private EncrypterInterface $encrypter,
-        private string $MINIMALISM_SERVICE_ADVANCED_LOGGER_SLACK,
-        private ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_URL=null,
+        private readonly Slack $slack,
+        private readonly EncrypterInterface $encrypter,
+        private readonly string $MINIMALISM_SERVICE_ADVANCED_LOGGER_SLACK,
+        private readonly ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_URL=null,
     )
     {
     }

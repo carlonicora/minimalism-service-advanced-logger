@@ -17,8 +17,8 @@ class LogIO extends AbstractSqlIO
     ): Log
     {
         return $this->data->create(
-            factory: $log,
-            sqlObjectInterfaceClass: Log::class,
+            queryFactory: $log,
+            responseType: Log::class,
         );
     }
 }

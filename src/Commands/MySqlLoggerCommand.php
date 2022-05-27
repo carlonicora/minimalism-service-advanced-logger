@@ -13,7 +13,7 @@ class MySqlLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
      * @param LogIO $logIO
      */
     public function __construct(
-        private LogIO $logIO,
+        private readonly LogIO $logIO,
     )
     {
     }

@@ -23,11 +23,11 @@ class EmailLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
     private bool $isActive=false;
 
     public function __construct(
-        private MailerInterface $mailer,
-        private EncrypterInterface $encrypter,
+        private readonly MailerInterface $mailer,
+        private readonly EncrypterInterface $encrypter,
         ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_SENDER=null,
         ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_DISTRIBUTION_LIST=null,
-        private ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_URL=null,
+        private readonly ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_URL=null,
     )
     {
         if ($MINIMALISM_SERVICE_ADVANCED_LOGGER_SENDER !== null && $MINIMALISM_SERVICE_ADVANCED_LOGGER_DISTRIBUTION_LIST !== null){

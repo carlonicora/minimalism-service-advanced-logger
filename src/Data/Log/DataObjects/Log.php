@@ -51,9 +51,9 @@ class Log implements SqlDataObjectInterface
     #[DbField(fieldType: DbFieldType::Array)]
     private array $context;
 
-    /** @var int  */
+    /** @var int|null  */
     #[DbField]
-    private int $userId;
+    private ?int $userId=null;
 
     /** @var string  */
     #[DbField]
@@ -142,10 +142,10 @@ class Log implements SqlDataObjectInterface
     }
 
     /**
-     * @param int $userId
+     * @param int|null $userId
      */
     public function setUserId(
-        int $userId,
+        ?int $userId=null,
     ): void
     {
         $this->userId = $userId;

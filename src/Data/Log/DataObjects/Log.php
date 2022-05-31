@@ -33,7 +33,7 @@ class Log implements SqlDataObjectInterface
 
     /** @var int|null  */
     #[DbField]
-    private ?int $parentLogId=null;
+    private int|null $parentLogId=null;
 
     /** @var LogLevel  */
     #[DbField(fieldType: DbFieldType::Custom)]
@@ -45,7 +45,7 @@ class Log implements SqlDataObjectInterface
 
     /** @var string|null  */
     #[DbField]
-    private ?string $domain;
+    private string|null $domain = null;
 
     /** @var array  */
     #[DbField(fieldType: DbFieldType::Array)]
@@ -53,15 +53,15 @@ class Log implements SqlDataObjectInterface
 
     /** @var int|null  */
     #[DbField]
-    private ?int $userId=null;
+    private int|null $userId = null;
 
     /** @var string  */
     #[DbField]
-    private string $method;
+    private string|null $method = null;
 
     /** @var string  */
     #[DbField]
-    private string $uri;
+    private string|null $uri = null;
 
     /** @var string  */
     #[DbField(fieldType: DbFieldType::IntDateTime)]
@@ -78,7 +78,7 @@ class Log implements SqlDataObjectInterface
         private readonly ObjectFactory $objectFactory,
         LogLevel $logLevel=LogLevel::Info,
         string $message='',
-        ?string $domain=null,
+        string|null $domain=null,
         array $context=[],
     )
     {
@@ -123,10 +123,10 @@ class Log implements SqlDataObjectInterface
     }
 
     /**
-     * @return int|null
+     * @return int
      */
     public function getId(
-    ): ?int
+    ): int
     {
         return $this->logId;
     }
@@ -145,7 +145,7 @@ class Log implements SqlDataObjectInterface
      * @param int|null $userId
      */
     public function setUserId(
-        ?int $userId=null,
+        int|null $userId=null,
     ): void
     {
         $this->userId = $userId;

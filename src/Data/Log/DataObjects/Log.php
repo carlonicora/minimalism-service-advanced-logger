@@ -53,15 +53,15 @@ class Log implements SqlDataObjectInterface
 
     /** @var int|null  */
     #[DbField]
-    private int|null $userId = null;
+    private ?int $userId = null;
 
-    /** @var string  */
+    /** @var string|null  */
     #[DbField]
-    private string|null $method = null;
+    private ?string $method = null;
 
-    /** @var string  */
+    /** @var string|null  */
     #[DbField]
-    private string|null $uri = null;
+    private ?string $uri = null;
 
     /** @var string  */
     #[DbField(fieldType: DbFieldType::IntDateTime)]

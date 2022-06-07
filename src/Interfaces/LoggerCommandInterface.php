@@ -1,7 +1,7 @@
 <?php
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces;
 
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
 
 interface LoggerCommandInterface
 {

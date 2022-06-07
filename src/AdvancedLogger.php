@@ -3,6 +3,7 @@ namespace CarloNicora\Minimalism\Services\AdvancedLogger;
 
 use CarloNicora\Minimalism\Abstracts\AbstractService;
 use CarloNicora\Minimalism\Factories\ServiceFactory;
+use CarloNicora\Minimalism\Factories\TimerFactory;
 use CarloNicora\Minimalism\Interfaces\Security\Interfaces\SecurityInterface;
 use CarloNicora\Minimalism\Objects\ModelParameters;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Commands\EmailLoggerCommand;
@@ -44,7 +45,7 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
      */
     public function __construct(
         Path $path,
-        private int $MINIMALISM_LOG_LEVEL=200,
+        private readonly int $MINIMALISM_LOG_LEVEL=200,
     )
     {
         $this->logLevel = LogLevel::from($this->MINIMALISM_LOG_LEVEL);
@@ -111,6 +112,9 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
             $parentLogId = null;
 
             foreach ($this->logs ?? [] as $log) {
+
+                $log->addContext(['releaseDuration' => TimerFactory::elapse()]);
+
                 if ($log->getLogLevel()->value >= $this->MINIMALISM_LOG_LEVEL) {
                     $this->addAdditionalInformation(
                         log: $log,

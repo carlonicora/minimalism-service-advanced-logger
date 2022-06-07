@@ -3,22 +3,22 @@ namespace CarloNicora\Minimalism\Services\AdvancedLogger\Commands;
 
 use CarloNicora\Minimalism\Enums\LogLevel;
 use CarloNicora\Minimalism\Interfaces\Encrypter\Interfaces\EncrypterInterface;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 use CarloNicora\Minimalism\Services\Slack\Objects\Elements\SlackMessageElementText;
 use CarloNicora\Minimalism\Services\Slack\Objects\Parts\SlackMessagePartHeader;
 use CarloNicora\Minimalism\Services\Slack\Objects\SlackMessage;
 use CarloNicora\Minimalism\Services\Slack\Slack;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
 
 class SlackLoggerCommand implements LoggerCommandInterface
 {
     public function __construct(
-        private Slack $slack,
-        private EncrypterInterface $encrypter,
-        private string $MINIMALISM_SERVICE_ADVANCED_LOGGER_SLACK,
-        private ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_URL=null,
+        private readonly Slack $slack,
+        private readonly EncrypterInterface $encrypter,
+        private readonly string $MINIMALISM_SERVICE_ADVANCED_LOGGER_SLACK,
+        private readonly ?string $MINIMALISM_SERVICE_ADVANCED_LOGGER_URL=null,
     )
     {
     }

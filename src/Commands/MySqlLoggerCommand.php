@@ -2,9 +2,9 @@
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Commands;
 
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\DataObjects\Log;
+use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\IO\LogIO;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Interfaces\LoggerCommandInterface;
-use CarloNicora\Minimalism\Services\AdvancedLogger\IO\LogIO;
 use Exception;
 
 class MySqlLoggerCommand implements LoggerCommandInterface, SimpleObjectInterface
@@ -13,7 +13,7 @@ class MySqlLoggerCommand implements LoggerCommandInterface, SimpleObjectInterfac
      * @param LogIO $logIO
      */
     public function __construct(
-        private LogIO $logIO,
+        private readonly LogIO $logIO,
     )
     {
     }

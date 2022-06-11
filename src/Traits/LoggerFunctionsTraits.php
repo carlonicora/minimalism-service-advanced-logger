@@ -22,6 +22,16 @@ trait LoggerFunctionsTraits
     }
 
     /**
+     * @param LogLevel $logLevel
+     */
+    public function setLogLevel(
+        LogLevel $logLevel,
+    ): void
+    {
+        $this->logLevel = $logLevel;
+    }
+
+    /**
      * @param string $name
      * @param string|int $value
      */

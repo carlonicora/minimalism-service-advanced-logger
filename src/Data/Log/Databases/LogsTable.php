@@ -1,41 +1,41 @@
 <?php
 namespace CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\Databases;
 
-use CarloNicora\Minimalism\Services\MySQL\Data\SqlField;
-use CarloNicora\Minimalism\Services\MySQL\Data\SqlTable;
-use CarloNicora\Minimalism\Services\MySQL\Enums\FieldOption;
-use CarloNicora\Minimalism\Services\MySQL\Enums\FieldType;
+use CarloNicora\Minimalism\Interfaces\Sql\Attributes\SqlFieldAttribute;
+use CarloNicora\Minimalism\Interfaces\Sql\Attributes\SqlTableAttribute;
+use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlFieldOption;
+use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlFieldType;
 
-#[SqlTable(name: 'logs', databaseIdentifier: 'Logger')]
+#[SqlTableAttribute(name: 'logs', databaseIdentifier: 'Logger')]
 enum LogsTable
 {
-    #[SqlField(fieldType: FieldType::Integer,fieldOption: FieldOption::AutoIncrement)]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::Integer,fieldOption: SqlFieldOption::AutoIncrement)]
     case logId;
 
-    #[SqlField(fieldType: FieldType::Integer)]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::Integer)]
     case parentLogId;
 
-    #[SqlField(fieldType: FieldType::Integer)]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::Integer)]
     case level;
 
-    #[SqlField]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::String)]
     case message;
 
-    #[SqlField]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::String)]
     case domain;
 
-    #[SqlField]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::String)]
     case context;
 
-    #[SqlField(fieldType: FieldType::Integer)]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::Integer)]
     case userId;
 
-    #[SqlField]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::String)]
     case method;
 
-    #[SqlField]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::String)]
     case uri;
 
-    #[SqlField(fieldOption: FieldOption::TimeCreate)]
+    #[SqlFieldAttribute(fieldType: SqlFieldType::String, fieldOption: SqlFieldOption::TimeCreate)]
     case time;
 }

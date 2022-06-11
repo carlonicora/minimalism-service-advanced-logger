@@ -48,7 +48,7 @@ class AdvancedLogger extends AbstractService implements LoggerInterface
         private readonly int $MINIMALISM_LOG_LEVEL=200,
     )
     {
-        $this->logLevel = LogLevel::from($this->MINIMALISM_LOG_LEVEL);
+        $this->setLogLevel(LogLevel::from($this->MINIMALISM_LOG_LEVEL));
     }
 
     /**

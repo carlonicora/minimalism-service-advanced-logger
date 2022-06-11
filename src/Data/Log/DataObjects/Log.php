@@ -11,8 +11,8 @@ use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbField;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbTable;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\DbFieldType;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
+use CarloNicora\Minimalism\Interfaces\Sql\Traits\SqlDataObjectTrait;
 use CarloNicora\Minimalism\Services\AdvancedLogger\Data\Log\Databases\LogsTable;
-use CarloNicora\Minimalism\Services\MySQL\Traits\SqlDataObjectTrait;
 
 #[DbTable(tableClass: LogsTable::class)]
 class Log implements SqlDataObjectInterface
@@ -45,7 +45,7 @@ class Log implements SqlDataObjectInterface
 
     /** @var string|null  */
     #[DbField]
-    private string|null $domain = null;
+    private string|null $domain;
 
     /** @var array  */
     #[DbField(fieldType: DbFieldType::Array)]
@@ -57,11 +57,11 @@ class Log implements SqlDataObjectInterface
 
     /** @var string|null  */
     #[DbField]
-    private ?string $method = null;
+    private ?string $method;
 
     /** @var string|null  */
     #[DbField]
-    private ?string $uri = null;
+    private ?string $uri;
 
     /** @var string  */
     #[DbField(fieldType: DbFieldType::IntDateTime)]

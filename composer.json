@@ -29,8 +29,8 @@
     "carlonicora/minimalism-interface-encrypter": "~1.0",
     "carlonicora/minimalism-interface-mailer": "~1.0",
     "carlonicora/minimalism-interface-security": "~1.0",
+    "carlonicora/minimalism-interface-sql": "~1.0",
     "carlonicora/minimalism-service-geolocator": "~5.0",
-    "carlonicora/minimalism-service-mysql": "~6.0",
     "carlonicora/minimalism-service-slack": "~3.0"
   }
 }
